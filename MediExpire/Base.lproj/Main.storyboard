@@ -228,7 +228,7 @@
                         <barButtonItem key="backBarButtonItem" title="My Cabinet" id="gmG-Dl-efo"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="pnn-qj-cHa">
                             <connections>
-                                <segue destination="r0e-59-x94" kind="presentation" id="lPc-TL-E6Q"/>
+                                <segue destination="r0e-59-x94" kind="presentation" identifier="addSegue" id="lPc-TL-E6Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -254,21 +254,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wcq-20-EcQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3830.7692307692305" y="1515.6398104265402"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="iVn-AG-z9K">
-            <objects>
-                <viewController id="iC7-tn-vJu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ife-0g-MaK">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="bd3-AO-GyN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3lc-7a-VOJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2115" y="1486"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.081317341507801011" green="0.097764225541617081" blue="0.66041272095959602" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
