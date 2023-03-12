@@ -7,18 +7,18 @@
 
 import UIKit
 
+protocol AddMedicineViewControllerDelegate: AnyObject {
+    func saveNewMedicine(medicine: Medicine)
+}
+
 class AddMedicineViewController: UIViewController {
      
     @IBOutlet weak var medicineNameTextField: UITextField!
-    
     @IBOutlet weak var expiryDateTextField: UITextField!
     
     let datePicker = UIDatePicker()
-    
-    let medicineCollection = MyCabinetViewController().medicineCollection
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("medicineCollection.plist")
-    
+    weak var delegate: AddMedicineViewControllerDelegate?
+    var newMedicine: Medicine?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,7 @@ class AddMedicineViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    
     func createDatePicker() {
-        
         expiryDateTextField.textAlignment = .center
         
         // create a toolbar
@@ -63,37 +61,16 @@ class AddMedicineViewController: UIViewController {
     
     @IBAction func addToMyCabinetButtonPressed(sender: UIButton) {
         if let nameText = medicineNameTextField.text {
-            // create instance here so you can store the data
+            // create instance here so can store the data
             let newMedicine = Medicine(name: nameText, expiryDate: datePicker.date)
-            // add it to array
-            let navController = presentingViewController as! UINavigationController
-            let myCabinetVC = navController.topViewController as! MyCabinetViewController
-            myCabinetVC.medicineCollection.append(newMedicine)
-            myCabinetVC.tableView.reloadData()
-            saveData()
-            print(medicineCollection.count)
+            delegate?.saveNewMedicine(medicine: newMedicine) // need to pass the medicine
         }
-        print(medicineCollection.count)
-       
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func Dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    func saveData() {
-        print(medicineCollection)
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(medicineCollection)
-            try data.write(to: dataFilePath!)
-        } catch {
-            print("Error encoding")
-        }
-        print(medicineCollection)
-    }
-    
 }
     
 
